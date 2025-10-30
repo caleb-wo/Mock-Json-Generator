@@ -1,13 +1,14 @@
 {
   "name": "MockJsonGenerator",
   "version": "1.0.0",
+  "type": "module",
   "description": "Generates mock json data",
   "main": "app/index.js",
   "scripts": {
-      "start": "ts-node src/index.ts",
-      "build": "tsc",
-      "prestart": "pnpm build",
-      "run": "node app/index.js"
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "prestart": "pnpm build",
+    "run": "node app/index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,6 @@
     "typescript": "^5.9.3"
   },
   "bin": {
-      "mock_json": "./app/index.js"
+    "mock_json": "./app/index.js"
   }
 }
