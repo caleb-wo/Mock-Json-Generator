@@ -1,0 +1,39 @@
+# Generated with Gemini.
+# Logs
+logs
+*.log
+pnpm-debug.log*
+
+# Dependencies
+node_modules/
+
+# TypeScript build output
+dist/
+app/
+*.js
+*.js.map
+*.d.ts
+
+# Runtime files
+*.tgz
+.env
+.env.development
+.env.test
+.env.production
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test coverage
+coverage/
+
+# Misc
+.npm/
+.eslintcache
