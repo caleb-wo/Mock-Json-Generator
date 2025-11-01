@@ -5,16 +5,23 @@ export class MockDataAssembler {
   static prepareReader(): rl.Interface {
     return rl.createInterface({ input, output });
   }
-
   
   keys: Set<string> = new Set();
   values: Map<string, any> = new Map();
 
-  async getKeys(set = this.keys): Promise<void> {
+  private askQuestion(query: string): Promise<string>{
     let reader = MockDataAssembler.prepareReader();
+    return new Promise((resolve) => {
+        reader.question(query, (ans)=>{
+          resolve(ans)
+        });
+    });
+    reader.close()
+  }
 
+  async getKeys(set = this.keys): Promise<void> {
     while (true) {
-      const rawKey = await reader.question(
+      const rawKey = await this.askQuestion(
         "Enter a key (or 'done' to move on): ",
       );
       let key = rawKey.trim().toLowerCase();
@@ -28,20 +35,27 @@ export class MockDataAssembler {
       }
     }
     console.log("Keys added.");
-    reader.close();
+  }
+
+  async getValues(keys = this.keys, values = this.values): Promise<void> {
+    for (const key of keys) {
+      const answer = await this.askQuestion(`Enter value for ${key}`);
+      
+      values.set(key, answer);
+    }
   }
 }
 
-enum MockString {
-  word,
-  sentence,
-  paragraph,
-  essay,
-}
+// enum MockString {
+//   word,
+//   sentence,
+//   paragraph,
+//   essay,
+// }
 
-enum MockNumber {
-  small,
-  medium,
-  large,
-  huge,
-}
+// enum MockNumber {
+//   small,
+//   medium,
+//   large,
+//   huge,
+// }
